@@ -14,8 +14,10 @@ public class DBconfig {
 
 		// プロパティファイルのフルパスを指定
 		String db_properties_file = "/eclipse-jee-oxygen-3a-win32-x86_64/workspace/CustomerManagement/DBconfig.properties";
-
+		
+		//上記のプロパティファイルを読み込む為に必要なPropertiesクラスをインスタンス化
 		Properties db_info = new Properties();
+		//ファイルをJava仮想マシンに読み込む為の入出力ストリームクラス
 		FileInputStream db_file_stream = new FileInputStream(db_properties_file);
 
 		try {

@@ -40,13 +40,13 @@ public class CustomerRegisterServlet extends HttpServlet {
 		String customer_name = request.getParameter("customer_name");
 		String customer_address = request.getParameter("customer_address");
 
-		// ŠÇ—Ò‚ÌƒZƒbƒVƒ‡ƒ“‚ğæ“¾
+		//ƒƒOƒCƒ“‚Éİ’è‚µ‚½ŠÇ—Ò‚ÌƒZƒbƒVƒ‡ƒ“î•ñ‚ğæ“¾
 		HttpSession session = request.getSession(true);
 		Admin admin = (Admin) session.getAttribute("admin");
 
 		Register register = new Register();
 
-		// ŒÚ‹qî•ñ“o˜^ˆ—‚ğÀs
+		//ŒÚ‹qî•ñ‚ğ“o˜^‚·‚éƒƒ\ƒbƒh(customer_register)‚Éˆø”(ŠÇ—ÒID,ŒÚ‹q–¼,ZŠ)‚ğİ’è‚µA“o˜^ˆ—‚ğÀs‚·‚é
 		register.customer_register(admin.getId(), customer_name, customer_address);
 
 		Login login = new Login();

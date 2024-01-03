@@ -16,6 +16,7 @@
      </div>
 </nav>
 </body>
+<!-- ログアウト確認ダイアログ表示 -->
 <script type="text/javascript">
 	function Logout_Dialog(){
 		var res = confirm("ログアウトします。よろしいですか?");

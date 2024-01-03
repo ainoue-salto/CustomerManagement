@@ -23,10 +23,14 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-	//ログイン画面を表示させる
+	//ログイン画面(login.jsp)を表示させる
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+		//forwardメソッドを使用するため、RequestDispatcherインターフェースのオブジェクトを生成
+		//RequestDispatcher = クライアントからリクエストを受信し、サーバー上の任意のリソース（サーブレット、HTML ファイル、JSP ファイルなど）に送信するオブジェクト
+		//ブラウザ(login.jsp)からのURLリクエストを受信し、LoginServlet.javaで受け取り
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+		//login.jspで受け取ったrequestとresponseをlogin.jspに転送する
+		//forward = Servletクラスがjspファイルに出力の表示を依頼する(処理をそのまま転送できる)
 		dispatcher.forward(request, response);
 	}
 
@@ -36,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 
-		// ログイン画面で入力された値を取得
+		// ログイン画面で入力された値(name)を取得
 		String admin_id = request.getParameter("admin_id");
 		String password = request.getParameter("password");
 
@@ -47,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 		Login login = new Login();
 		Admin admin = login.check(admin_id, password);
 
+		//login_flagがtrue or falseで条件分岐
 		if(admin.isLogin_flag()) {
 			// ログイン成功 → 次の画面へ遷移
 			System.out.println("ログイン成功");
@@ -56,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 			// セッションに管理者情報(オブジェクト)を格納
 			admin_session.setAttribute("admin", admin);
 
-
+			//customerを初期化
 			List<Customer> customer = null;
 			// データベースから取得した顧客情報を格納
 			customer = login.getCustomerInfo(admin_id);

@@ -24,11 +24,15 @@ public class Update {
 
 		// データベースへの接続
 		// try〜catch〜resources構文を使用
-		try(Connection conn = DriverManager.getConnection(url,user,pass)){
+		try{
+			Connection conn = DriverManager.getConnection(url,user,pass);
 			// オートコミット機能を無効化
 			conn.setAutoCommit(false);
 
-			try(PreparedStatement stmt = conn.prepareStatement(update_sql)){
+			//update_sqlをプリコンパイルしてstmtに格納
+			try{
+				//update_sqlをプリコンパイルしてstmtに格納
+				PreparedStatement stmt = conn.prepareStatement(update_sql);
 				// 変数update_sqlの一番目の?にnameをセット
 				stmt.setString(1, name);
 				// 変数update_sqlの二番目の?にaddressをセット

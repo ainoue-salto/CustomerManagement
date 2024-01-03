@@ -25,10 +25,13 @@ public class Register {
 		// データベースへの接続
 		// try〜catch〜resources構文を使用
 		try(Connection conn = DriverManager.getConnection(url,user,pass)){
-			// オートコミット機能を無効化
+			// オートコミット機能(SQL文の実行ごとに自動的にコミット処理を行う機能)を無効化
 			conn.setAutoCommit(false);
 
-			try(PreparedStatement stmt = conn.prepareStatement(register_sql)){
+			
+			try{
+				//register_sqlをプリコンパイルしてstmtに格納
+				PreparedStatement stmt = conn.prepareStatement(register_sql);
 				// 変数register_sqlの一番目の?にdmin_idをセット
 				stmt.setInt(1, admin_id);
 				// 変数register_sqlの一番目の?にnameをセット
@@ -42,6 +45,7 @@ public class Register {
 				conn.commit();
 				System.out.println("コミット処理を行いました");
 			} catch (SQLException e) {
+				//登録処理中に予期せぬ事態が発生した場合、登録までの一連の処理を無効にする
 				conn.rollback();
 				System.out.println("ロールバック処理を行いました");
 				e.printStackTrace();

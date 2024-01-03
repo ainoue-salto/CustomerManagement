@@ -48,6 +48,7 @@ public class CustomerDeleteServlet extends HttpServlet {
 		// Ši”[‚µ‚½ŒÚ‹qî•ñ‚ğ‘JˆÚæ‚Ì‰æ–Ê‚É“n‚·
 		request.setAttribute("customer", customer);
 
+		//ŒÚ‹qˆê——‰æ–Ê‚ğ•\¦
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);

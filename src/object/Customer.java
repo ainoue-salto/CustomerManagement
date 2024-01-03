@@ -2,6 +2,7 @@ package object;
 
 import java.util.Date;
 
+//DB‚©‚çæ“¾‚µ‚½ŒÚ‹qî•ñ‚Ì’l‚ğŠi”[‚·‚éƒNƒ‰ƒX
 public class Customer {
 
 	private int customer_id;

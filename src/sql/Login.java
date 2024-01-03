@@ -13,6 +13,7 @@ import config.DBconfig;
 import object.Admin;
 import object.Customer;
 
+//入力された値(管理者IDとパスワード)とDBに登録された値が一致するかの確認を行う
 public class Login {
 
 	public Admin check(String admin_id, String password) throws FileNotFoundException {
@@ -23,10 +24,10 @@ public class Login {
 		String user = db_info.getDBinfo().get("user");
 		String pass = db_info.getDBinfo().get("password");
 
-		// 実行SQL
+		// 実行SQL(1つ目の?にadmin_id, 2つ目の?にpasswordが入る)
 		String login_sql = "select * from admin_tb "
 				+ "where admin_id = ? and password = ?;";
-		// 管理者のオブジェクトを作成
+		// 管理者のオブジェクト(Admin.java)を作成
 		Admin admin = new Admin();
 
 		// データベースへの接続
@@ -34,6 +35,7 @@ public class Login {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url,user,pass);
+			//login_sqlをプリコンパイルしてstmtに格納
 			PreparedStatement stmt = conn.prepareStatement(login_sql);
 
 			// 変数login_sqlの一番目の?に引数のuser_idをセット
@@ -79,10 +81,13 @@ public class Login {
 			// 顧客情報のデータを格納するListを作成
 			List<Customer> cus_list = new ArrayList<Customer>();
 
-			try(Connection conn = DriverManager.getConnection(url, user, pass)){
+			try{
+				Connection conn = DriverManager.getConnection(url, user, pass);
+				//customer_sqlをプリコンパイルしてstmtに格納
 				PreparedStatement stmt = conn.prepareStatement(customer_sql);
 
 				stmt.setString(1, admin_id);
+				//結果をセット
 				ResultSet rs = stmt.executeQuery();
 
 				while(rs.next()) {

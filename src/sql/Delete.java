@@ -25,8 +25,10 @@ public class Delete {
 		try(Connection conn = DriverManager.getConnection(url,user,pass)){
 			// オートコミット機能を無効化
 			conn.setAutoCommit(false);
-
-			try(PreparedStatement stmt = conn.prepareStatement(delete_sql)){
+			
+			try{
+				//delete_sqlをプリコンパイルしてstmtに格納
+				PreparedStatement stmt = conn.prepareStatement(delete_sql);
 				// 変数delete_sqlの一番目の?にcustomer_idをセット
 				stmt.setInt(1, customer_id);
 				// SQLの実行

@@ -15,13 +15,16 @@
 	<div class="mx-auto" style="width: 300px;">
 		<h1 class="mb-3" style="text-align: center">顧客編集画面</h1>
 		<form action="/CustomerManagement/CustomerUpdateServlet" method="post">
+			<!-- 編集する顧客情報の顧客ID(customer_id)をブラウザ上に表示させることなくCustomerUpdateServletに渡す -->
 			<input type="hidden" name="id" value="<%= customer.getCustomer_id() %>">
 		  <div class="mb-3">
 		    <label for="name" class="form-label">お客様名</label>
+		    <!-- 編集する顧客情報(名前)をcutomer.getName()で予め表示しておく -->
 		    <input type="text" class="form-control" id="name" name="name" value="<%= customer.getName() %>" required>
 		  </div>
 		  <div class="mb-3">
 		    <label for="address" class="form-label">住所</label>
+		    <!-- 編集する顧客情報(住所)をcutomer.getAddress()で予め表示しておく -->
 		    <input type="text" class="form-control" id="address" name="address" value="<%= customer.getAddress() %>" required>
 		  </div>
 		  <button type="submit" class="btn btn-primary">編集する</button>

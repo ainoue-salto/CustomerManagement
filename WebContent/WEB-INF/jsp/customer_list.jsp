@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 使用するタグライブラリ(JSTL = JSPでよく使用される機能をタグライブラリとしてまとめたもの)の宣言 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.lang.*" %>
 <%@ page import="java.util.List" %>
 <%@ page import="object.Customer" %>
+<!-- request.setAttributeで設定した値をJSP側で取得し、新たにリスト形式の変数に代入 -->
 <% List<Customer> customer_list = (List<Customer>)request.getAttribute("customer"); %>
 
 <!DOCTYPE html>
@@ -29,6 +31,7 @@
 			 </tr>
 		</thead>
 		<tbody>
+			<!-- リスト形式で取得した値が存在する分だけ表示 -->
 			 <% for(Customer cus : customer_list) { %>
 			 <tr>
 			 	<td><%= cus.getCustomer_id() %></td>
@@ -44,6 +47,7 @@
 			 	<c:url var="delete" value="/CustomerDeleteServlet">
 			 		<c:param name="id" value="<%= String.valueOf(cus.getCustomer_id()) %>"></c:param>
 			 	</c:url>
+			 	<!-- varで取得した変数をURLパラメータ内に設定することで選択した顧客データの編集画面に飛ぶことができる -->
 			 	<td><a href="${update}" >編集</a> | <a href="${delete}" onclick="return Delete_Dialog()">削除</a></td>
 			 </tr>
 			 <% } %>
@@ -52,6 +56,7 @@
 	<a href="<%= request.getContextPath() %>/CustomerRegisterServlet">顧客登録画面へ</a>
 </div>
 </body>
+<!-- 削除ボタン押下時間違い防止に確認ダイアログを表示 -->
 <script type="text/javascript">
 	function Delete_Dialog(){
 		var res = confirm("選択した顧客データを削除します。よろしいですか?");

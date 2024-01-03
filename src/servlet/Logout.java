@@ -27,6 +27,7 @@ public class Logout extends HttpServlet {
 		// 引数(false) → セッションがなければnullを返す
 		HttpSession admin_session = request.getSession(false);
 
+		//セッションが存在していたら
 		if(admin_session != null) {
 			System.out.println("セッションが存在しています。そのため、セッションを破棄します。");
 			// セッションを破棄する

@@ -26,10 +26,14 @@ public class SelectOneCustomer {
 		// customer_id（顧客ID）で該当する顧客情報を取得する
 		String one_customer_sql = "select * from customer_tb where customer_id = ?;";
 
-		try(Connection conn = DriverManager.getConnection(url,user,pass)){
+		try{
+			Connection conn = DriverManager.getConnection(url,user,pass);
+			//one_customer_sqlをプリコンパイルしてstmtに格納
 			PreparedStatement stmt = conn.prepareStatement(one_customer_sql);
 
+			//one_customer_sqlの?部分にcutomer_idをセット
 			stmt.setInt(1, customer_id);
+			//結果をセット
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()) {

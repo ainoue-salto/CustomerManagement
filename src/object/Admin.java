@@ -1,5 +1,6 @@
 package object;
 
+//DBから取得した値を格納・取得するオブジェクト
 public class Admin {
 
 	private int id;
@@ -35,6 +36,7 @@ public class Admin {
 		return login_flag;
 	}
 
+	//ログイン画面で入力した値とDBでの値が一致すればtrueを返すフラグ
 	public void setLogin_flag(boolean login_flag) {
 		this.login_flag = login_flag;
 	}

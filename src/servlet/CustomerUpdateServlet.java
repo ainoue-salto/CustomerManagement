@@ -39,9 +39,11 @@ public class CustomerUpdateServlet extends HttpServlet {
 
 		// ‘JˆÚæ‰æ–Ê‚É’l‚ğ“n‚·
 		request.setAttribute("customer", customer);
-
+		
+		//customer_update.jsp‚ğ•\¦
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("WEB-INF/jsp/customer_update.jsp");
+		//customer_update.jsp‚Éˆ—‚ğ“Š‚°‚é
 		dispatcher.forward(request, response);
 	}
 
@@ -66,12 +68,13 @@ public class CustomerUpdateServlet extends HttpServlet {
 		Login login = new Login();
 		List<Customer> customer = null;
 
-		// ƒf[ƒ^ƒx[ƒX‚©‚çæ“¾‚µ‚½ŒÚ‹qî•ñ‚ğŠi”[
+		// XVˆ—Œã‚ÉuŒÚ‹qˆê——‰æ–Êv‚É‘JˆÚ‚³‚¹‚é‚½‚ß‚ÉAƒf[ƒ^ƒx[ƒX‚©‚çÄæ“¾‚µ‚½ŒÚ‹qî•ñ‚ğŠi”[
 		customer = login.getCustomerInfo(String.valueOf(admin.getId()));
 
 		// Ši”[‚µ‚½ŒÚ‹qî•ñ‚ğ‘JˆÚæ‚Ì‰æ–Ê‚É“n‚·
 		request.setAttribute("customer", customer);
-
+		
+		//ŒÚ‹qˆê——‰æ–Ê‚É‘JˆÚ
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
