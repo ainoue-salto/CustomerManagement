@@ -16,16 +16,16 @@
 		<form action="/CustomerManagement/CustomerRegisterServlet" method="post">
 		  <div class="mb-3">
 		    <label for="customerName" class="form-label">お客様名</label>
-		    <input type="text" class="form-control" id="customerName" name="customer_name" required>
+		    <input type="text" class="form-control" id="name" name="name" required>
 		  </div>
 		  <div class="mb-3">
 		    <label for="customerEmail" class="form-label">メールアドレス</label>
-		    <input type="text" class="form-control" id="customerEmail" name="customer_email" required>
+		    <input type="text" class="form-control" id="email" name="email" required>
 		    <p id="result" />
 		  </div>
 		  <div class="mb-3">
 		    <label for="address" class="form-label">住所</label>
-		    <input type="text" class="form-control" id="address" name="customer_address" required>
+		    <input type="text" class="form-control" id="address" name="address" required>
 		  </div>
 		  <button type="submit" class="btn btn-primary">登録する</button>
 		</form>
@@ -38,7 +38,7 @@
 	*/
 	
 	/*入力フォームの要素*/
-	var form=document.getElementById("customerEmail");
+	var form=document.getElementById("email");
 	/*結果出力用の要素*/
 	var result=document.getElementById("result");
 	/*メールアドレスのパターン 正規表現*/

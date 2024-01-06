@@ -37,9 +37,9 @@ public class CustomerRegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// 顧客登録画面で入力された値を取得
-		String customer_name = request.getParameter("customer_name");
-		String customer_email = request.getParameter("customer_email");
-		String customer_address = request.getParameter("customer_address");
+		String customer_name = request.getParameter("name");
+		String customer_email = request.getParameter("email");
+		String customer_address = request.getParameter("address");
 
 		//ログイン時に設定した管理者のセッション情報を取得
 		HttpSession session = request.getSession(true);
