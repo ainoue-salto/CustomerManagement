@@ -23,6 +23,11 @@
 		    <input type="text" class="form-control" id="name" name="name" value="<%= customer.getName() %>" required>
 		  </div>
 		  <div class="mb-3">
+		    <label for="email" class="form-label">メールアドレス</label>
+		    <!-- 編集する顧客情報(メアド)をcutomer.getEmail()で予め表示しておく -->
+		    <input type="text" class="form-control" id="email" name="email" value="<%= customer.getEmail() %>" required>
+		  </div>
+		  <div class="mb-3">
 		    <label for="address" class="form-label">住所</label>
 		    <!-- 編集する顧客情報(住所)をcutomer.getAddress()で予め表示しておく -->
 		    <input type="text" class="form-control" id="address" name="address" value="<%= customer.getAddress() %>" required>

@@ -24,6 +24,7 @@
 			 <tr>
 			 	<th scope="col">顧客ID</th>
 			 	<th scope="col">お客様名</th>
+			 	<th scope="col">メールアドレス</th>
 			 	<th scope="col">住所</th>
 			 	<th scope="col">登録日</th>
 			 	<th scope="col">更新日</th>
@@ -36,6 +37,7 @@
 			 <tr>
 			 	<td><%= cus.getCustomer_id() %></td>
 			 	<td><%= cus.getName() %></td>
+			 	<td><%= cus.getEmail() %></td>
 			 	<td><%= cus.getAddress() %></td>
 			 	<td><%= cus.getRegistered_time() %></td>
 			 	<td><%= cus.getUpdated_time() %></td>

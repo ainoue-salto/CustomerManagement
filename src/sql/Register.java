@@ -10,7 +10,7 @@ import config.DBconfig;
 
 public class Register {
 
-	public void customer_register(int admin_id, String name, String address) throws FileNotFoundException {
+	public void customer_register(int admin_id, String name, String address, String email) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -20,7 +20,7 @@ public class Register {
 
 		// 実行SQL
 		String register_sql = "insert into customer_tb"
-				+ "(admin_id, name, address) values(?,?,?)";
+				+ "(admin_id, name, address, email) values(?,?,?,?)";
 
 		// データベースへの接続
 		// try〜catch〜resources構文を使用
@@ -32,12 +32,14 @@ public class Register {
 			try{
 				//register_sqlをプリコンパイルしてstmtに格納
 				PreparedStatement stmt = conn.prepareStatement(register_sql);
-				// 変数register_sqlの一番目の?にdmin_idをセット
+				// 変数register_sqlの1番目の?にdmin_idをセット
 				stmt.setInt(1, admin_id);
-				// 変数register_sqlの一番目の?にnameをセット
+				// 変数register_sqlの2番目の?にnameをセット
 				stmt.setString(2, name);
-				// 変数register_sqlの一番目の?にaddressをセット
+				// 変数register_sqlの3番目の?にaddressをセット
 				stmt.setString(3, address);
+				// 変数register_sqlの4番目の?にemailをセット
+				stmt.setString(4, email);
 				 // SQLの実行
 				stmt.executeUpdate();
 

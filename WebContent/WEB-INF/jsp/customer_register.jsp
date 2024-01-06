@@ -18,6 +18,10 @@
 		    <input type="text" class="form-control" id="customerName" name="customer_name" required>
 		  </div>
 		  <div class="mb-3">
+		    <label for="customerEmail" class="form-label">メールアドレス</label>
+		    <input type="text" class="form-control" id="customerEmail" name="customer_email" required>
+		  </div>
+		  <div class="mb-3">
 		    <label for="address" class="form-label">住所</label>
 		    <input type="text" class="form-control" id="address" name="customer_address" required>
 		  </div>

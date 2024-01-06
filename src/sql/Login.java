@@ -97,6 +97,7 @@ public class Login {
 					cus_info.setCustomer_id(rs.getInt("customer_id"));
 					cus_info.setAdmin_id(rs.getInt("admin_id"));
 					cus_info.setName(rs.getString("name"));
+					cus_info.setEmail(rs.getString("email"));
 					cus_info.setAddress(rs.getString("address"));
 					cus_info.setRegistered_time(rs.getDate("registered_time"));
 					cus_info.setUpdated_time(rs.getDate("updated_time"));

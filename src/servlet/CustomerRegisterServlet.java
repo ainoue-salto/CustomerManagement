@@ -38,6 +38,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 
 		// ŒÚ‹q“o˜^‰æ–Ê‚Å“ü—Í‚³‚ê‚½’l‚ğæ“¾
 		String customer_name = request.getParameter("customer_name");
+		String customer_email = request.getParameter("customer_email");
 		String customer_address = request.getParameter("customer_address");
 
 		//ƒƒOƒCƒ“‚Éİ’è‚µ‚½ŠÇ—Ò‚ÌƒZƒbƒVƒ‡ƒ“î•ñ‚ğæ“¾
@@ -47,7 +48,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 		Register register = new Register();
 
 		//ŒÚ‹qî•ñ‚ğ“o˜^‚·‚éƒƒ\ƒbƒh(customer_register)‚Éˆø”(ŠÇ—ÒID,ŒÚ‹q–¼,ZŠ)‚ğİ’è‚µA“o˜^ˆ—‚ğÀs‚·‚é
-		register.customer_register(admin.getId(), customer_name, customer_address);
+		register.customer_register(admin.getId(), customer_name, customer_address, customer_email);
 
 		Login login = new Login();
 		List<Customer> customer = null;

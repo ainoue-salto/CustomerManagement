@@ -40,6 +40,7 @@ public class SelectOneCustomer {
 				//オブジェクトにデータを一時格納
 				one_customer.setCustomer_id(rs.getInt("customer_id"));
 				one_customer.setName(rs.getString("name"));
+				one_customer.setEmail(rs.getString("email"));
 				one_customer.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {

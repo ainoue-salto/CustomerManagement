@@ -55,11 +55,12 @@ public class CustomerUpdateServlet extends HttpServlet {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 
 		Update sql = new Update();
 		// 顧客情報編集（更新）処理を実行
-		sql.customer_update(name, address, id);
+		sql.customer_update(name, email, address, id);
 
 		// 管理者のセッションを取得
 		HttpSession session = request.getSession(true);

@@ -10,7 +10,7 @@ import config.DBconfig;
 
 public class Update {
 
-	public  void customer_update(String name, String address, int customer_id) throws FileNotFoundException {
+	public  void customer_update(String name, String email, String address, int customer_id) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -20,7 +20,7 @@ public class Update {
 
 		// 実行SQL
 		String update_sql = "update customer_tb "
-				+ "set name = ?, address = ? where customer_id = ?;";
+				+ "set name = ?,  email = ?, address = ? where customer_id = ?;";
 
 		// データベースへの接続
 		// try〜catch〜resources構文を使用
@@ -35,10 +35,13 @@ public class Update {
 				PreparedStatement stmt = conn.prepareStatement(update_sql);
 				// 変数update_sqlの一番目の?にnameをセット
 				stmt.setString(1, name);
-				// 変数update_sqlの二番目の?にaddressをセット
-				stmt.setString(2, address);
-				// 変数update_sqlの三番目の?にcustomer_idをセット
-				stmt.setInt(3, customer_id);
+				// 変数update_sqlの二番目の?にemailをセット
+				stmt.setString(2, email);
+				// 変数update_sqlの三番目の?にaddressをセット
+				stmt.setString(3, address);
+				// 変数update_sqlの四番目の?にcustomer_idをセット
+				stmt.setInt(4, customer_id);
+				
 				// SQLの実行
 				stmt.executeUpdate();
 				//コミット
