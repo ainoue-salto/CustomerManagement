@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
@@ -16,15 +17,4 @@
      </div>
 </nav>
 </body>
-<!-- ログアウト確認ダイアログ表示 -->
-<script type="text/javascript">
-	function Logout_Dialog(){
-		var res = confirm("ログアウトします。よろしいですか?");
-		if(res){
-			return true;
-		} else {
-			return false;
-		};
-	};
-</script>
 </html>

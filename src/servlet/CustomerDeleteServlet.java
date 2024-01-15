@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import object.Admin;
 import object.Customer;
-import sql.Delete;
+import sql.DeleteCustomerData;
 import sql.Login;
 
 /**
@@ -31,7 +31,7 @@ public class CustomerDeleteServlet extends HttpServlet {
 		// 「削除」リンクから対象の顧客IDを取得
 		int id =Integer.parseInt(request.getParameter("id"));
 
-		Delete sql = new Delete();
+		DeleteCustomerData sql = new DeleteCustomerData();
 		// 顧客削除処理を実行
 		sql.customer_delete(id);
 
@@ -50,7 +50,7 @@ public class CustomerDeleteServlet extends HttpServlet {
 
 		//顧客一覧画面を表示
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
+				request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 

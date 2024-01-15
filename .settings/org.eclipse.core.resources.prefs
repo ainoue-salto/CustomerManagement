@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/sql/Delete.java=UTF-8
+encoding//src/sql/DeleteCustomerData.java=UTF-8
 encoding//src/sql/Login.java=UTF-8
-encoding//src/sql/Register.java=UTF-8
-encoding//src/sql/Update.java=UTF-8
+encoding//src/sql/RegisterCustomerData.java=UTF-8
+encoding//src/sql/UpdateCustomerData.java=UTF-8

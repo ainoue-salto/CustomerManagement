@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
-public class Register {
+public class RegisterCustomerData {
 
 	public void customer_register(int admin_id, String name, String address, String email) throws FileNotFoundException {
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
-public class Update {
+public class UpdateCustomerData {
 
 	public  void customer_update(String name, String email, String address, int customer_id) throws FileNotFoundException {
 

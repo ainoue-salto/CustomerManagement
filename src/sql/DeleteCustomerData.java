@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
-public class Delete {
+public class DeleteCustomerData {
 	public void customer_delete(int customer_id) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得

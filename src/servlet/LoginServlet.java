@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		//forwardメソッドを使用するため、RequestDispatcherインターフェースのオブジェクトを生成
 		//RequestDispatcher = クライアントからリクエストを受信し、サーバー上の任意のリソース（サーブレット、HTML ファイル、JSP ファイルなど）に送信するオブジェクト
 		//ブラウザ(login.jsp)からのURLリクエストを受信し、LoginServlet.javaで受け取り
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login.jsp");
 		//login.jspで受け取ったrequestとresponseをlogin.jspに転送する
 		//forward = Servletクラスがjspファイルに出力の表示を依頼する(処理をそのまま転送できる)
 		dispatcher.forward(request, response);
@@ -71,13 +71,13 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("customer", customer);
 
 			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
+					request.getRequestDispatcher("/jsp/customer_list.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			// ログイン失敗 → ログイン画面へ遷移
 			System.out.println("ログイン失敗");
 			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+					request.getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

@@ -15,7 +15,7 @@ import object.Admin;
 import object.Customer;
 import sql.Login;
 import sql.SelectOneCustomer;
-import sql.Update;
+import sql.UpdateCustomerData;
 
 /**
  * Servlet implementation class CustomerUpdateServlet
@@ -42,7 +42,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		
 		//customer_update.jspを表示
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/customer_update.jsp");
+				request.getRequestDispatcher("/jsp/customer_update.jsp");
 		//customer_update.jspに処理を投げる
 		dispatcher.forward(request, response);
 	}
@@ -58,7 +58,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 
-		Update sql = new Update();
+		UpdateCustomerData sql = new UpdateCustomerData();
 		// 顧客情報編集（更新）処理を実行
 		sql.customer_update(name, email, address, id);
 
@@ -77,7 +77,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		
 		//顧客一覧画面に遷移
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
+				request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 }

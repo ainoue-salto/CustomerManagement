@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import object.Admin;
 import object.Customer;
 import sql.Login;
-import sql.Register;
+import sql.RegisterCustomerData;
 
 /**
  * Servlet implementation class CustomerRegisterServlet
@@ -27,7 +27,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 	// ŒÚ‹q“o˜^‰æ–Ê‚ğ•\¦‚³‚¹‚é
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/customer_register.jsp");
+				request.getRequestDispatcher("/jsp/customer_register.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -45,7 +45,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Admin admin = (Admin) session.getAttribute("admin");
 
-		Register register = new Register();
+		RegisterCustomerData register = new RegisterCustomerData();
 
 		//ŒÚ‹qî•ñ‚ğ“o˜^‚·‚éƒƒ\ƒbƒh(customer_register)‚Éˆø”(ŠÇ—ÒID,ŒÚ‹q–¼,ZŠ)‚ğİ’è‚µA“o˜^ˆ—‚ğÀs‚·‚é
 		register.customer_register(admin.getId(), customer_name, customer_address, customer_email);
@@ -60,7 +60,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 		request.setAttribute("customer", customer);
 
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
+				request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 }
