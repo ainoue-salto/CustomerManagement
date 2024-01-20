@@ -23,25 +23,28 @@ public class DBconfig {
 		try {
 			// プロパティファイルを読み込む
 			db_info.load(db_file_stream);
+			
+			//DBconfig.propertiesのキーから値を取得する
+			String db_url = db_info.getProperty("url");
+			String db_user = db_info.getProperty("user");
+			String db_pass = db_info.getProperty("password");
+
+			// 取得したデータベースの接続情報をMapに格納する
+			Map<String,String> getDBinfoForMap = new HashMap<>();
+
+			getDBinfoForMap.put("url", db_url);
+			getDBinfoForMap.put("user", db_user);
+			getDBinfoForMap.put("password", db_pass);
+			
+			// DBconfigクラスの
+			// getDBinfoメソッドが呼び出された際に
+			// 『接続情報、ユーザ名、パスワード』の情報を返す
+			return getDBinfoForMap;
+			
 		} catch (IOException e) {
 			System.out.println("データベース設定ファイルが認識できませんでした");
 			e.printStackTrace();
 		}
-		//DBconfig.propertiesのキーから値を取得する
-		String db_url = db_info.getProperty("url");
-		String db_user = db_info.getProperty("user");
-		String db_pass = db_info.getProperty("password");
-
-		// 取得したデータベースの接続情報をMapに格納する
-		Map<String,String> getDBinfoForMap = new HashMap<>();
-
-		getDBinfoForMap.put("url", db_url);
-		getDBinfoForMap.put("user", db_user);
-		getDBinfoForMap.put("password", db_pass);
-
-		// DBconfigクラスの
-		// getDBinfoメソッドが呼び出された際に
-		// 『接続情報、ユーザ名、パスワード』の情報を返す
-		return getDBinfoForMap;
+		return null;
 	}
 }

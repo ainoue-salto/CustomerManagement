@@ -47,8 +47,4 @@ public class Logout extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	// Žg—p‚µ‚Ü‚¹‚ñ
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
 }
