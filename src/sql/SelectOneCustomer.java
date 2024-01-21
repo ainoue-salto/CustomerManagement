@@ -10,8 +10,20 @@ import java.sql.SQLException;
 import config.DBconfig;
 import object.Customer;
 
+/**
+ * 選択した顧客情報詳細の取得
+ * @author ayaka
+ *
+ */
 public class SelectOneCustomer {
-
+	
+	/**
+	 * DBから選択された顧客情報を取得
+	 * 
+	 * @param customer_id 顧客ID（customer_tbの主キー）
+	 * @return　主キーに紐づいたすべての顧客情報
+	 * @throws FileNotFoundException
+	 */
 	public Customer get_One_Customer_Info(int customer_id) throws FileNotFoundException {
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -26,6 +38,9 @@ public class SelectOneCustomer {
 		// customer_id（顧客ID）で該当する顧客情報を取得する
 		String one_customer_sql = "select * from customer_tb where customer_id = ?;";
 
+		/**
+		 * @throws SQLException
+		 */
 		try{
 			Connection conn = DriverManager.getConnection(url,user,pass);
 			//one_customer_sqlをプリコンパイルしてstmtに格納

@@ -19,10 +19,22 @@ import sql.Login;
 /**
  * Servlet implementation class CustomerDeleteServlet
  */
+/**
+ * ŒÚ‹qî•ñ‚Ìíœ
+ * @author ayaka
+ *
+ */
 @WebServlet("/CustomerDeleteServlet")
 public class CustomerDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * ŒÚ‹qî•ñíœˆ—
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// •¶šƒR[ƒh‚Ìİ’è
 		response.setContentType("text/html; charset=UTF-8");
@@ -49,8 +61,7 @@ public class CustomerDeleteServlet extends HttpServlet {
 		request.setAttribute("customer", customer);
 
 		//ŒÚ‹qˆê——‰æ–Ê‚ğ•\¦
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/jsp/customer_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 

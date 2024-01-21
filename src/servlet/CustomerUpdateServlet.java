@@ -21,10 +21,22 @@ import sql.UpdateCustomerData;
  * Servlet implementation class CustomerUpdateServlet
  */
 @WebServlet("/CustomerUpdateServlet")
+/**
+ * 顧客情報の更新
+ * @author ayaka
+ *
+ */
 public class CustomerUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// 「顧客編集画面」への遷移
+	/**
+	 * 「顧客編集画面」への遷移
+	 * 
+	 * @param request 
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
@@ -47,7 +59,13 @@ public class CustomerUpdateServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	// 顧客編集処理
+	/**
+	 * 顧客編集処理
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
@@ -76,8 +94,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		request.setAttribute("customer", customer);
 		
 		//顧客一覧画面に遷移
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/jsp/customer_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 }

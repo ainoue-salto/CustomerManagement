@@ -1,6 +1,14 @@
 package object;
 
-//DBから取得した値を格納・取得するオブジェクト
+
+/**
+ *DBから取得した値を格納・取得するオブジェクト 
+ * @author ayaka
+ * @param id admin_tbテーブルのadmin_idカラムに格納されている値
+ * @param name admin_tbテーブルのnameカラムに格納されている値
+ * @param password admin_tbテーブルのpasswordカラムに格納されている値
+ *
+ */
 public class Admin {
 
 	private int id;
@@ -36,7 +44,11 @@ public class Admin {
 		return login_flag;
 	}
 
-	//ログイン画面で入力した値とDBでの値が一致すればtrueを返すフラグ
+	/**
+	 * ログイン画面で入力した値とDBでの値が一致すればtrueを返すフラグ
+	 * 
+	 * @param login_flag 一致すればtrue,そうでなければfalse
+	 */
 	public void setLogin_flag(boolean login_flag) {
 		this.login_flag = login_flag;
 	}

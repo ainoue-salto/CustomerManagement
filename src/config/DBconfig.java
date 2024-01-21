@@ -7,6 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * DB接続情報を取得する
+ * 
+ * @author ayaka
+ *
+ */
 public class DBconfig {
 
 	// データベースの接続情報を取得するメソッド
@@ -20,6 +26,13 @@ public class DBconfig {
 		//ファイルをJava仮想マシンに読み込む為の入出力ストリームクラス
 		FileInputStream db_file_stream = new FileInputStream(db_properties_file);
 
+		/**
+		 * @param db_url 接続情報
+		 * @param db_user ユーザー名
+		 * @param db_password パスワード
+		 * @return DBの接続情報
+		 * @throws IOException
+		 */
 		try {
 			// プロパティファイルを読み込む
 			db_info.load(db_file_stream);

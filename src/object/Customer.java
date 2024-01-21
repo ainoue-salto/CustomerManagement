@@ -2,7 +2,20 @@ package object;
 
 import java.util.Date;
 
-//DBから取得した顧客情報の値を格納するクラス
+/**
+ * DBから取得した顧客情報の値を格納する
+ * 
+ * @author ayaka
+ *　@param customer_id  customer_tbテーブルの主キー
+ *　@param admin_id ログインした管理者の管理者id(ログインした人が登録した顧客情報を分けるため)
+ *　@param name 顧客名
+ *　@param email 顧客のメールアドレス
+ *　@param address 顧客の住所
+ *　@param registered_time 登録日時
+ * @param update_time 更新日時
+ *
+ *
+ */
 public class Customer {
 
 	private int customer_id;

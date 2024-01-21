@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <title>顧客一覧画面</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
@@ -58,15 +59,4 @@
 	<a href="<%= request.getContextPath() %>/CustomerRegisterServlet">顧客登録画面へ</a>
 </div>
 </body>
-<!-- 削除ボタン押下時間違い防止に確認ダイアログを表示 -->
-<script type="text/javascript">
-	function Delete_Dialog(){
-		var res = confirm("選択した顧客データを削除します。よろしいですか?");
-		if(res){
-			return true;
-		} else {
-			return false;
-		};
-	};
-</script>
 </html>

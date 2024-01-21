@@ -15,9 +15,16 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
-	// ログアウト処理の実装
+	/**
+	 * ログアウト処理の実装
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
@@ -42,8 +49,7 @@ public class Logout extends HttpServlet {
 			System.out.println("セッションが破棄されました。");
 		};
 
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
 

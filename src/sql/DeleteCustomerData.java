@@ -8,7 +8,18 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
+/**
+ * 顧客情報削除SQL
+ * @author ayaka
+ *
+ */
 public class DeleteCustomerData {
+	/**
+	 * 顧客情報削除処理
+	 * 
+	 * @param customer_id 顧客ID(customer_tbの主キー)
+	 * @throws FileNotFoundException
+	 */
 	public void customer_delete(int customer_id) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
@@ -20,12 +31,20 @@ public class DeleteCustomerData {
 		// 実行SQL
 		String delete_sql = "delete from customer_tb where customer_id = ?;";
 
-		// データベースへの接続
-		// try〜catch〜resources構文を使用
-		try(Connection conn = DriverManager.getConnection(url,user,pass)){
+		/**
+		 * データベースへの接続
+		 * try〜catch〜resources構文を使用
+		 * @throws SQLException
+		 */
+		try{
+			Connection conn = DriverManager.getConnection(url,user,pass);
 			// オートコミット機能を無効化
 			conn.setAutoCommit(false);
 			
+			/**
+			 * 削除sqlをコミット
+			 * @throws SQLException
+			 */
 			try{
 				//delete_sqlをプリコンパイルしてstmtに格納
 				PreparedStatement stmt = conn.prepareStatement(delete_sql);

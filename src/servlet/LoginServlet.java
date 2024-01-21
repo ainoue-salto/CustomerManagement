@@ -22,8 +22,12 @@ import sql.Login;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	//ログイン画面(login.jsp)を表示させる
+	/**
+	 * ログイン画面(login.jsp)を表示
+	 * 
+	 * 	@param request ブラウザ(login.jsp)からのURLリクエスト
+	 *  @param response レスポンス
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//forwardメソッドを使用するため、RequestDispatcherインターフェースのオブジェクトを生成
 		//RequestDispatcher = クライアントからリクエストを受信し、サーバー上の任意のリソース（サーブレット、HTML ファイル、JSP ファイルなど）に送信するオブジェクト
@@ -34,7 +38,14 @@ public class LoginServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	// ログイン処理の実装
+	/**
+	 * ログイン処理
+	 * 
+	 * 	@param request ブラウザ(login.jsp)からのURLリクエスト
+	 *  @param response レスポンス
+	 *  @param admin_id ログイン画面で入力されたID
+	 *  @param password ログイン画面で入力されたパスワード
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
@@ -70,14 +81,12 @@ public class LoginServlet extends HttpServlet {
 			//request.setAttribute(“データの名前”,登録するデータ)
 			request.setAttribute("customer", customer);
 
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("/jsp/customer_list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			// ログイン失敗 → ログイン画面へ遷移
 			System.out.println("ログイン失敗");
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("/jsp/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

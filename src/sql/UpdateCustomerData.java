@@ -8,8 +8,21 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
+/**
+ * 顧客情報の更新
+ * @author ayaka
+ *
+ */
 public class UpdateCustomerData {
-
+	
+	/**
+	 * 更新処理
+	 * @param name 顧客名
+	 * @param email 顧客のメールアドレス
+	 * @param address 顧客の住所
+	 * @param customer_id 顧客ID(customer_tbの主キー)
+	 * @throws FileNotFoundException
+	 */
 	public  void customer_update(String name, String email, String address, int customer_id) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
@@ -22,14 +35,20 @@ public class UpdateCustomerData {
 		String update_sql = "update customer_tb "
 				+ "set name = ?,  email = ?, address = ? where customer_id = ?;";
 
-		// データベースへの接続
-		// try〜catch〜resources構文を使用
+		/**
+		 * DBへの接続
+		 * try〜catch〜resources構文を使用
+		 * @throws SQLException
+		 */
 		try{
 			Connection conn = DriverManager.getConnection(url,user,pass);
 			// オートコミット機能を無効化
 			conn.setAutoCommit(false);
 
-			//update_sqlをプリコンパイルしてstmtに格納
+			/**
+			 * update_sqlをプリコンパイルしてstmtに格納
+			 * @throws SQLException
+			 */
 			try{
 				//update_sqlをプリコンパイルしてstmtに格納
 				PreparedStatement stmt = conn.prepareStatement(update_sql);

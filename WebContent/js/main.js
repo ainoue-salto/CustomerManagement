@@ -24,8 +24,22 @@ window.addEventListener("input", function(e){
 /*
  * ログアウト確認ダイアログ表示
 */
+
 function Logout_Dialog(){
 	var res = confirm("ログアウトします。よろしいですか?");
+	if(res){
+		return true;
+	} else {
+		return false;
+	};
+};
+
+/*
+ * 削除ボタン押下時間違い防止に確認ダイアログを表示
+ */
+
+function Delete_Dialog(){
+	var res = confirm("選択した顧客データを削除します。よろしいですか?");
 	if(res){
 		return true;
 	} else {

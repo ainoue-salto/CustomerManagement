@@ -8,8 +8,23 @@ import java.sql.SQLException;
 
 import config.DBconfig;
 
+/**
+ * 顧客情報登録
+ * 
+ * @author ayaka
+ *
+ */
 public class RegisterCustomerData {
 
+	/**
+	 * 登録処理
+	 * 
+	 * @param admin_id 管理者ID
+	 * @param name 顧客名
+	 * @param address 顧客の住所
+	 * @param email　顧客のメールアドレス
+	 * @throws FileNotFoundException
+	 */
 	public void customer_register(int admin_id, String name, String address, String email) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
@@ -22,13 +37,21 @@ public class RegisterCustomerData {
 		String register_sql = "insert into customer_tb"
 				+ "(admin_id, name, address, email) values(?,?,?,?)";
 
-		// データベースへの接続
-		// try〜catch〜resources構文を使用
-		try(Connection conn = DriverManager.getConnection(url,user,pass)){
+		/**
+		 * データベースへの接続
+		 * try〜catch〜resources構文を使用
+		 * 
+		 * @throws SQLException
+		 */
+		try{
+			Connection conn = DriverManager.getConnection(url,user,pass);
 			// オートコミット機能(SQL文の実行ごとに自動的にコミット処理を行う機能)を無効化
 			conn.setAutoCommit(false);
 
-			
+			/**
+			 * 登録のsqlをコミット
+			 * @throws SQLException
+			 */
 			try{
 				//register_sqlをプリコンパイルしてstmtに格納
 				PreparedStatement stmt = conn.prepareStatement(register_sql);

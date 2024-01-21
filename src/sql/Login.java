@@ -13,9 +13,21 @@ import config.DBconfig;
 import object.Admin;
 import object.Customer;
 
-//入力された値(管理者IDとパスワード)とDBに登録された値が一致するかの確認を行う
+/**
+ * 入力された値(管理者IDとパスワード)とDBに登録された値が一致するかの確認を行う
+ * 
+ * @author ayaka
+ */
 public class Login {
 
+	/**
+	 * DBに登録されている管理者情報を確認
+	 * 
+	 * @param admin_id admin_tbテーブルのadmin_idカラムに格納されている値
+	 * @param password admin_tbテーブルのpasswordカラムに格納されている値
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public Admin check(String admin_id, String password) throws FileNotFoundException {
 
 		// データベースへの接続情報をプロパティファイルから取得
@@ -30,8 +42,12 @@ public class Login {
 		// 管理者のオブジェクト(Admin.java)を作成
 		Admin admin = new Admin();
 
-		// データベースへの接続
-		// try〜catch〜resources構文を使用
+		/**
+		 * DBへの接続
+		 * 
+		 * @throws SQLException
+		 * @throws ClassNotFoundException
+		 */
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url,user,pass);
@@ -46,8 +62,10 @@ public class Login {
 			// SQLを実行し、結果を取得
 			ResultSet rs = stmt.executeQuery();
 
-			// データベースから取得した値をAdminオブジェクトに格納
-			// 値がなければ、login_flag（false）のみ格納
+			/**
+			 * データベースから取得した値をAdminオブジェクトに格納
+			 * 値がなければ、login_flag（false）のみ格納
+			 */
 			if(rs.next()) {
 				admin.setId(rs.getInt("admin_id"));
 				admin.setName(rs.getString("name"));
@@ -64,7 +82,13 @@ public class Login {
 		return admin;
 	}
 	
-	// ログイン成功後に管理者が管理する顧客情報の取得
+		/**
+		 * ログイン成功後に管理者が管理する顧客情報の取得
+		 * 
+		 * @param admin_id 管理者ID
+		 * @return cus_list 顧客情報一覧
+		 * @throws FileNotFoundException
+		 */
 		public List<Customer> getCustomerInfo(String admin_id) throws FileNotFoundException {
 
 			// データベースへの接続情報をプロパティファイルから取得
@@ -81,6 +105,11 @@ public class Login {
 			// 顧客情報のデータを格納するListを作成
 			List<Customer> cus_list = new ArrayList<Customer>();
 
+			/**
+			 * 顧客情報を格納
+			 * 
+			 * @throws SQLException
+			 */
 			try{
 				Connection conn = DriverManager.getConnection(url, user, pass);
 				//customer_sqlをプリコンパイルしてstmtに格納

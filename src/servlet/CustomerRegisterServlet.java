@@ -23,14 +23,27 @@ import sql.RegisterCustomerData;
 public class CustomerRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	// ŒÚ‹q“o˜^‰æ–Ê‚ğ•\¦‚³‚¹‚é
+	/**
+	 * ŒÚ‹q“o˜^‰æ–Ê‚ğ•\¦‚³‚¹‚é
+	 * 
+	 * @param request 
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/jsp/customer_register.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_register.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	/**
+	 * ŒÚ‹qî•ñ‚ğ‘JˆÚæ‚Ì‰æ–Ê‚É“n‚·
+	 * 
+	 * @param request 
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// •¶šƒR[ƒh‚Ìİ’è
 		response.setContentType("text/html; charset=UTF-8");
@@ -59,8 +72,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 		// Ši”[‚µ‚½ŒÚ‹qî•ñ‚ğ‘JˆÚæ‚Ì‰æ–Ê‚É“n‚·
 		request.setAttribute("customer", customer);
 
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/jsp/customer_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 		dispatcher.forward(request, response);
 	}
 }
