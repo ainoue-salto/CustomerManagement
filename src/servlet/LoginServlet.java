@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.logging.*;
 
 import object.Admin;
 import object.Customer;
@@ -28,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	 * 	@param request ブラウザ(login.jsp)からのURLリクエスト
 	 *  @param response レスポンス
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		//forwardメソッドを使用するため、RequestDispatcherインターフェースのオブジェクトを生成
 		//RequestDispatcher = クライアントからリクエストを受信し、サーバー上の任意のリソース（サーブレット、HTML ファイル、JSP ファイルなど）に送信するオブジェクト
 		//ブラウザ(login.jsp)からのURLリクエストを受信し、LoginServlet.javaで受け取り
@@ -64,8 +65,21 @@ public class LoginServlet extends HttpServlet {
 
 		//login_flagがtrue or falseで条件分岐
 		if(admin.isLogin_flag()) {
-			// ログイン成功 → 次の画面へ遷移
-			System.out.println("ログイン成功");
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("ログイン成功");
 			
 			// ログイン成功時にセッションオブジェクトを作成する
 			HttpSession admin_session = request.getSession(true);
@@ -84,8 +98,22 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			// ログイン失敗 → ログイン画面へ遷移
-			System.out.println("ログイン失敗");
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("ログイン失敗");
+            
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}

@@ -1,12 +1,18 @@
 package sql;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import config.DBconfig;
+import servlet.LoginServlet;
 
 /**
  * 顧客情報の更新
@@ -65,10 +71,41 @@ public class UpdateCustomerData {
 				stmt.executeUpdate();
 				//コミット
 				conn.commit();
-				System.out.println("更新処理が成功しました");
+				
+				Logger logger = Logger.getLogger(LoginServlet.class.getName());
+				logger.setLevel(Level.INFO);
+				Handler handler = null;
+				try {
+					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				} catch (SecurityException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
+		        logger.addHandler(handler);
+		        // log()を使用して指定のログレベルメッセージを出力
+		        logger.info("更新処理が成功しました");
+		        
 			} catch (SQLException e) {
 				conn.rollback();
-				System.out.println("ロールバック処理を行いました");
+				
+				Logger logger = Logger.getLogger(LoginServlet.class.getName());
+				logger.setLevel(Level.INFO);
+				Handler handler = null;
+				try {
+					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				} catch (SecurityException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
+		        logger.addHandler(handler);
+		        // log()を使用して指定のログレベルメッセージを出力
+		        logger.info("ロールバック処理を行いました");
 				e.printStackTrace();
 			}
 		} catch (SQLException e1) {

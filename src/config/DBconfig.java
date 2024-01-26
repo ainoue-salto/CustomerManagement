@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import servlet.LoginServlet;
 
 /**
  * DB接続情報を取得する
@@ -55,6 +61,21 @@ public class DBconfig {
 			return getDBinfoForMap;
 			
 		} catch (IOException e) {
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.severe("データベース設定ファイルが認識できませんでした");
 			System.out.println("データベース設定ファイルが認識できませんでした");
 			e.printStackTrace();
 		}

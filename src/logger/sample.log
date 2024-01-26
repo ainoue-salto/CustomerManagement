@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-31j" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-01-27T01:38:41</date>
+  <millis>1706287121767</millis>
+  <sequence>39</sequence>
+  <logger>servlet.LoginServlet</logger>
+  <level>INFO</level>
+  <class>servlet.Logout</class>
+  <method>doGet</method>
+  <thread>17</thread>
+  <message>セッションが存在していません。</message>
+</record>
+<record>
+  <date>2024-01-27T01:38:41</date>
+  <millis>1706287121769</millis>
+  <sequence>40</sequence>
+  <logger>servlet.LoginServlet</logger>
+  <level>INFO</level>
+  <class>servlet.Logout</class>
+  <method>doGet</method>
+  <thread>17</thread>
+  <message>セッションが破棄されました。</message>
+</record>

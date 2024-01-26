@@ -1,6 +1,7 @@
 package sql;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,10 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import config.DBconfig;
 import object.Admin;
 import object.Customer;
+import servlet.LoginServlet;
 
 /**
  * 入力された値(管理者IDとパスワード)とDBに登録された値が一致するかの確認を行う
@@ -26,9 +32,10 @@ public class Login {
 	 * @param admin_id admin_tbテーブルのadmin_idカラムに格納されている値
 	 * @param password admin_tbテーブルのpasswordカラムに格納されている値
 	 * @return
-	 * @throws FileNotFoundException
+	 * @throws IOException 
+	 * @throws SecurityException 
 	 */
-	public Admin check(String admin_id, String password) throws FileNotFoundException {
+	public Admin check(String admin_id, String password) throws SecurityException, IOException {
 
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -75,7 +82,21 @@ public class Login {
 				admin.setLogin_flag(false);
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("データベースとの接続を閉じます");
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("データベースとの接続を閉じます");
 			e.printStackTrace();
 		}
 		// データベースから取得した値を返す
@@ -90,7 +111,7 @@ public class Login {
 		 * @throws FileNotFoundException
 		 */
 		public List<Customer> getCustomerInfo(String admin_id) throws FileNotFoundException {
-
+	        
 			// データベースへの接続情報をプロパティファイルから取得
 			DBconfig db_info = new DBconfig();
 			String url = db_info.getDBinfo().get("url");
@@ -136,7 +157,21 @@ public class Login {
 					cus_list.add(cus_info);
 				}
 			} catch (SQLException e) {
-				System.out.println("データベースとの接続を閉じます");
+				Logger logger = Logger.getLogger(LoginServlet.class.getName());
+				logger.setLevel(Level.INFO);
+				Handler handler = null;
+				try {
+					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				} catch (SecurityException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
+		        logger.addHandler(handler);
+		        // log()を使用して指定のログレベルメッセージを出力
+		        logger.info("データベースとの接続を閉じます");
 				e.printStackTrace();
 			}
 			return cus_list;

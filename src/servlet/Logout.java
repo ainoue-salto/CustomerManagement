@@ -1,6 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,17 +40,63 @@ public class Logout extends HttpServlet {
 
 		//セッションが存在していたら
 		if(admin_session != null) {
-			System.out.println("セッションが存在しています。そのため、セッションを破棄します。");
+			
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("セッションが存在しています。そのため、セッションを破棄します。");
+
 			// セッションを破棄する
 			admin_session.invalidate();
 		} else {
-			System.out.println("セッションが存在していません。");
+			
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("セッションが存在していません。");
 		}
 
 		admin_session = request.getSession(false);
 
 		if(admin_session == null) {
-			System.out.println("セッションが破棄されました。");
+			
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("セッションが破棄されました。");
 		};
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login.jsp");

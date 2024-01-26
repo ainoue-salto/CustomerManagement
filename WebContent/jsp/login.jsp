@@ -18,12 +18,12 @@
 		  <div class="form-item">
 		    <label for="adminID" class="form-label">管理者ID</label>
 		    　　<!-- 入力された管理者IDの値をLoginServletのdoPostメソッドに渡す -->
-		    <input type="text" class="form-control" id="adminID" name="admin_id">
+		    <input type="text" class="form-control" id="adminID" name="admin_id" value="1">
 		  </div>
 		  <div class="form-item">
 		    <label for="pass" class="form-label">パスワード</label>
 		    　　<!-- 入力されたパスワードの値をLoginServletのdoPostメソッドに渡す -->
-		    <input type="password" class="form-control" id="pass" name="password">
+		    <input type="password" class="form-control" id="pass" name="password" value="11111111">
 		  </div>
 		  <button type="submit" class="btn btn-primary">ログイン</button>
 		</form>

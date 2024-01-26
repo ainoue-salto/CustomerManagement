@@ -1,14 +1,20 @@
 package sql;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import config.DBconfig;
 import object.Customer;
+import servlet.LoginServlet;
 
 /**
  * 選択した顧客情報詳細の取得
@@ -59,7 +65,21 @@ public class SelectOneCustomer {
 				one_customer.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {
-			System.out.println("データベースとの接続を閉じます");
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			try {
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+			} catch (SecurityException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
+	        logger.addHandler(handler);
+	        // log()を使用して指定のログレベルメッセージを出力
+	        logger.info("データベースとの接続を閉じます");
 			e.printStackTrace();
 		}
 		return one_customer;
