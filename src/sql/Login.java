@@ -177,4 +177,3 @@ public class Login {
 			return cus_list;
 		}
 }
-
