@@ -37,6 +37,10 @@ public class Login {
 	 */
 	public Admin check(String admin_id, String password) throws SecurityException, IOException {
 
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
 		String url = db_info.getDBinfo().get("url");
@@ -82,9 +86,6 @@ public class Login {
 				admin.setLogin_flag(false);
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
 			try {
 				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 			} catch (SecurityException e1) {
@@ -96,7 +97,7 @@ public class Login {
 			}
 	        logger.addHandler(handler);
 	        // log()を使用して指定のログレベルメッセージを出力
-	        logger.info("データベースとの接続を閉じます");
+	        logger.info("データベースとの接続を閉じますテスト");
 			e.printStackTrace();
 		}
 		// データベースから取得した値を返す
@@ -112,6 +113,10 @@ public class Login {
 		 */
 		public List<Customer> getCustomerInfo(String admin_id) throws FileNotFoundException {
 	        
+			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			logger.setLevel(Level.INFO);
+			Handler handler = null;
+			
 			// データベースへの接続情報をプロパティファイルから取得
 			DBconfig db_info = new DBconfig();
 			String url = db_info.getDBinfo().get("url");
@@ -157,9 +162,6 @@ public class Login {
 					cus_list.add(cus_info);
 				}
 			} catch (SQLException e) {
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {
@@ -171,7 +173,7 @@ public class Login {
 				}
 		        logger.addHandler(handler);
 		        // log()を使用して指定のログレベルメッセージを出力
-		        logger.info("データベースとの接続を閉じます");
+		        logger.info("データベースとの接続を閉じますテスト");
 				e.printStackTrace();
 			}
 			return cus_list;

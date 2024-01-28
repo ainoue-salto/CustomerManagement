@@ -28,6 +28,10 @@ public class DeleteCustomerData {
 	 */
 	public void customer_delete(int customer_id) throws FileNotFoundException {
 
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
 		String url = db_info.getDBinfo().get("url");
@@ -61,9 +65,6 @@ public class DeleteCustomerData {
 				// コミット
 				conn.commit();
 				
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {
@@ -79,10 +80,7 @@ public class DeleteCustomerData {
 
 			} catch (SQLException e) {
 				conn.rollback();
-				
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
+
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {

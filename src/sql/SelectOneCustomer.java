@@ -31,6 +31,11 @@ public class SelectOneCustomer {
 	 * @throws FileNotFoundException
 	 */
 	public Customer get_One_Customer_Info(int customer_id) throws FileNotFoundException {
+		
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
 		String url = db_info.getDBinfo().get("url");
@@ -65,9 +70,6 @@ public class SelectOneCustomer {
 				one_customer.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
 			try {
 				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 			} catch (SecurityException e1) {

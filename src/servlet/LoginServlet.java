@@ -48,6 +48,10 @@ public class LoginServlet extends HttpServlet {
 	 *  @param password ログイン画面で入力されたパスワード
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -65,11 +69,11 @@ public class LoginServlet extends HttpServlet {
 
 		//login_flagがtrue or falseで条件分岐
 		if(admin.isLogin_flag()) {
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			/*Logger logger = Logger.getLogger(LoginServlet.class.getName());
 			logger.setLevel(Level.INFO);
-			Handler handler = null;
+			Handler handler = null;*/
 			try {
-				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\servlet\\sample.log", true);
 			} catch (SecurityException e1) {
 				// TODO 自動生成された catch ブロック
 				e1.printStackTrace();
@@ -98,11 +102,11 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/customer_list.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
+			/*Logger logger = Logger.getLogger(LoginServlet.class.getName());
 			logger.setLevel(Level.INFO);
-			Handler handler = null;
+			Handler handler = null;*/
 			try {
-				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\servlet\\sample.log", true);
 			} catch (SecurityException e1) {
 				// TODO 自動生成された catch ブロック
 				e1.printStackTrace();

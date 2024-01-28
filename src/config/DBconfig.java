@@ -24,6 +24,10 @@ public class DBconfig {
 	// データベースの接続情報を取得するメソッド
 	public Map<String, String>  getDBinfo() throws FileNotFoundException {
 
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// プロパティファイルのフルパスを指定
 		String db_properties_file = "/eclipse-jee-oxygen-3a-win32-x86_64/workspace/CustomerManagement/DBconfig.properties";
 		
@@ -61,11 +65,9 @@ public class DBconfig {
 			return getDBinfoForMap;
 			
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
+		
 			try {
-				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
+				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\servlet\\sample.log", true);
 			} catch (SecurityException e1) {
 				// TODO 自動生成された catch ブロック
 				e1.printStackTrace();

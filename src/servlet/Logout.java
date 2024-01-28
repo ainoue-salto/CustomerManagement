@@ -30,6 +30,11 @@ public class Logout extends HttpServlet {
 	 * @throws IOException
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
+		
 		// 文字コードの設定
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -41,9 +46,6 @@ public class Logout extends HttpServlet {
 		//セッションが存在していたら
 		if(admin_session != null) {
 			
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
 			try {
 				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 			} catch (SecurityException e1) {
@@ -61,9 +63,6 @@ public class Logout extends HttpServlet {
 			admin_session.invalidate();
 		} else {
 			
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
 			try {
 				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 			} catch (SecurityException e1) {
@@ -82,9 +81,6 @@ public class Logout extends HttpServlet {
 
 		if(admin_session == null) {
 			
-			Logger logger = Logger.getLogger(LoginServlet.class.getName());
-			logger.setLevel(Level.INFO);
-			Handler handler = null;
 			try {
 				handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 			} catch (SecurityException e1) {

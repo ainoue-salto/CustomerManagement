@@ -32,6 +32,10 @@ public class RegisterCustomerData {
 	 * @throws FileNotFoundException
 	 */
 	public void customer_register(int admin_id, String name, String address, String email) throws FileNotFoundException {
+		
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
 
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -75,9 +79,6 @@ public class RegisterCustomerData {
 				// コミット
 				conn.commit();
 				
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {
@@ -92,9 +93,7 @@ public class RegisterCustomerData {
 		        logger.info("コミット処理を行いました");
 		        
 			} catch (SQLException e) {
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
+			
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {

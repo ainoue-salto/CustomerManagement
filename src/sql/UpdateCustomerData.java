@@ -30,6 +30,10 @@ public class UpdateCustomerData {
 	 * @throws FileNotFoundException
 	 */
 	public  void customer_update(String name, String email, String address, int customer_id) throws FileNotFoundException {
+		
+		Logger logger = Logger.getLogger(LoginServlet.class.getName());
+		logger.setLevel(Level.INFO);
+		Handler handler = null;
 
 		// データベースへの接続情報をプロパティファイルから取得
 		DBconfig db_info = new DBconfig();
@@ -72,9 +76,6 @@ public class UpdateCustomerData {
 				//コミット
 				conn.commit();
 				
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {
@@ -91,9 +92,6 @@ public class UpdateCustomerData {
 			} catch (SQLException e) {
 				conn.rollback();
 				
-				Logger logger = Logger.getLogger(LoginServlet.class.getName());
-				logger.setLevel(Level.INFO);
-				Handler handler = null;
 				try {
 					handler = new FileHandler("C:\\eclipse-jee-oxygen-3a-win32-x86_64\\workspace\\CustomerManagement\\src\\logger\\sample.log", true);
 				} catch (SecurityException e1) {
